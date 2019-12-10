@@ -1,15 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using DG.UserPosts.Business.Posts.Queries.GetList;
+using DG.UserPosts.Business.Posts.Queries.GetListByUserId;
+using DG.UserPosts.Business.UserPosts.Queries.Get;
+using DG.UserPosts.Business.UserPosts.Queries.GetList;
+using DG.UserPosts.Business.Users.Queries.Get;
+using DG.UserPosts.Business.Users.Queries.GetList;
+using DG.UserPosts.Contracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using Refit;
 
 namespace DG.UserPosts.Api
 {
@@ -25,6 +27,18 @@ namespace DG.UserPosts.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IGetPostListQuery, GetPostListQuery>();
+            services.AddScoped<IGetUserListQuery, GetUserListQuery>();
+            
+            services.AddScoped<IGetPostListByUserIdQuery, GetPostListByUserIdQuery>();
+            services.AddScoped<IGetUserQuery, GetUserQuery>();
+
+            services.AddScoped<IGetUsersPostListQuery, GetUsersPostListQuery>();
+            services.AddScoped<IGetUserPostsByUserIdQuery, GetUserPostsByUserIdQuery>();
+
+            services.AddRefitClient<IJSONPlaceholderService>()
+                    .ConfigureHttpClient(c => c.BaseAddress = new Uri("http://jsonplaceholder.typicode.com"));
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
