@@ -15,7 +15,7 @@ namespace DG.UserPosts.Business.Posts.Queries.GetListByUserId
             _jSONPlaceholderService = jSONPlaceholderService;
         }
 
-        public async Task<List<PostContract>> ExecuteAsync(int id)
+        public async Task<List<PostListContract>> ExecuteAsync(int id)
         {
             return await _jSONPlaceholderService.GetPostListByUserIdAsync(id); ;
         }

@@ -14,6 +14,6 @@ namespace DG.UserPosts.Contracts
         [Get("/posts")]
         Task<List<PostListContract>> GetPostListAsync();
         [Get("/posts")]
-        Task<List<PostContract>> GetPostListByUserIdAsync([Query("userId")] int userId);
+        Task<List<PostListContract>> GetPostListByUserIdAsync([Query("userId")] int userId);
     }
 }

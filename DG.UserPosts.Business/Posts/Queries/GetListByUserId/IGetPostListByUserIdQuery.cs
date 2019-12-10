@@ -6,6 +6,6 @@ namespace DG.UserPosts.Business.Posts.Queries.GetListByUserId
 {
     public interface IGetPostListByUserIdQuery
     {
-        Task<List<PostContract>> ExecuteAsync(int id);
+        Task<List<PostListContract>> ExecuteAsync(int id);
     }
 }

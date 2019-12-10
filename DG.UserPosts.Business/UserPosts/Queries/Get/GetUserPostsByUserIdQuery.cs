@@ -45,7 +45,7 @@ namespace DG.UserPosts.Business.UserPosts.Queries.Get
             return result;
         }
 
-        private UserPostByUserIdModel MapToModel(List<PostContract> posts, List<UserContract> user)
+        private UserPostByUserIdModel MapToModel(List<PostListContract> posts, List<UserContract> user)
         {
             return new UserPostByUserIdModel
             {
