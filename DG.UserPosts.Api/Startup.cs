@@ -55,6 +55,8 @@ namespace DG.UserPosts.Api
                 app.UseHsts();
             }
 
+            app.UseCors(builder => builder.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod().AllowCredentials());
+
             app.UseHttpsRedirection();
             app.UseMvc();
         }
